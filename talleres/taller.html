@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talleres y Actividades | Thiago Mar</title>
+    <link rel="icon" href="../img/thiago.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Splash&display=swap');
+    </style>
+</head>
+
+<body>
+
+<nav class="nav">
+    <div class="nav-container">
+
+        <a href="../index.html" class="nav-logo">
+            <img src="../img/thiago.png" alt="Thiago Mar">
+        </a>
+
+        <div class="nav-toggle" id="nav-toggle">
+            ☰
+        </div>
+
+        <ul class="nav-menu" id="nav-menu">
+
+            <li><a href="../index.html">Inicio</a></li>
+
+            <li class="nav-dropdown">
+                <button class="dropdown-toggle">Artista ▾</button>
+                <ul class="dropdown-menu">
+                    <li><a href="../artista.html">Biografía</a></li>
+                    <li><a href="../galeria.html">Obras</a></li>
+                </ul>
+            </li>
+            <li><a href="../obras/obras.html">Originales</a></li>
+            <li><a href="../expo.html">Exposiciones</a></li>
+            <li><a href="../talleres/taller.html">Actividades</a></li>
+            <li><a href="../consulta.html">Consulta</a></li>
+            <li><a href="../merch/merch.html">Mercancía</a></li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<h1 class="titulo-seccion">Talleres y Actividades</h1>
+
+<!-- FILTROS -->
+<div class="filtros">
+    <button onclick="filtrar('todo')">Todo</button>
+    <button onclick="filtrar('taller')">Talleres</button>
+    <button onclick="filtrar('actividad')">Actividades</button>
+    <button onclick="filtrar('convocatoria')">Convocatorias</button>
+</div>
+
+<!-- GALERÍA -->
+<section class="galeria-taller">
+
+<!-- Destacado -->    
+<div class="card item convocatoria fijado" data-fecha="2026-06-05">
+        <img src="../img/talleres/japomex_conv.png" alt="JAPO-MEX">
+        <div class="card-info">
+            <span class="badge convocatoria-badge">Convocatoria</span>
+            <h3>Convocatoria JAPO-MEX</h3>
+            <p>6 Marzo 2026</p>
+            <a href="japomex.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- TALLER -->
+     <!-- <div class="card item taller lleno" data-fecha="2026-03-07">
+        <img src="../img/talleres/Acu2.png" alt="Dibuja la biodiversidad">
+        <div class="card-info">
+            <span class="badge taller-badge">Taller</span>
+            <h3>Dibuja la biodiversidad</h3>
+            <p>Sábado 7 de marzo 2026</p>
+            <p>Costo: $452</p>
+            <a href="acuarela_trajinera.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>-->
+
+        <div class="card item taller" data-fecha="2026-03-13">
+        <img src="../img/talleres/grana.png" alt="Recorrido guiado">
+        <div class="card-info">
+            <span class="badge taller-badge">Taller</span>
+            <h3>Taller de grana cochinilla y acuarela</h3>
+            <p>8 y 13 de Marzo 2026</p>
+            <p>Cooperación voluntaria</p>
+            <a href="grana_cochinilla.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- CONVOCATORIA -->
+    <div class="card item convocatoria" data-fecha="2026-03-18">
+        <img src="../img/talleres/quiote.png" alt="Convocatoria Quiote">
+        <div class="card-info">
+            <span class="badge convocatoria-badge">Convocatoria</span>
+            <h3>Convocatoria Quiote</h3>
+            <p>Del 6 febrero al 18 de marzo</p>
+            <p></p>
+            <a href="quiote.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>
+
+
+
+    <!-- ACTIVIDAD -->
+    <!--  <div class="card item actividad" data-fecha="2026-02-22">
+        <img src="../img/talleres/festival_fanz.png" alt="Festival Fanzine">
+        <div class="card-info">
+            <span class="badge actividad-badge">Actividad</span>
+            <h3>Festival Fanzine</h3>
+            <p>6 Febrero 2026</p>
+            <p>Cupo: 18 / 25</p>
+            <a href="festival_fanz.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>-->
+
+    <div class="card item actividad" data-fecha="2026-03-11">
+        <img src="../img/talleres/grana2.png" alt="Recorrido guiado">
+        <div class="card-info">
+            <span class="badge actividad-badge">Actividad</span>
+            <h3>Pintando con grana cochinilla y con temple de Dextrina</h3>
+            <p>4 y 11 de Marzo 2026</p>
+            <p>Actividad Gratuita</p>
+            <a href="granacochinilla2.html">
+                <button class="btn-detalle">Ver detalles</button>
+            </a>
+        </div>
+    </div>
+
+
+
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-redes">
+            <a href="https://www.instagram.com/thiagomar_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61562899717440" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@thiagoomar_" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <p class="footer-copy">© 2026 Thiago Mar — Todos los derechos reservados</p>
+
+        <p class="footer-creadora">
+            Diseño y Desarrollo por <a href="https://instagram.com/eledithgs" target="_blank">@eledithgs</a>
+        </p>
+    </div>
+</footer>
+<!-- JS (SIEMPRE AL FINAL Y SOLO UNA VEZ) -->
+<script src="../js/main.js"></script>
+</body>
+</html>

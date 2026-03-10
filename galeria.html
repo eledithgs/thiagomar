@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Thiago Mar | Galería</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/thiago.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+
+<body class="galeria-page">
+
+<nav class="nav">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <img src="img/thiago.png" alt="Thiago Mar">
+        </a>
+        <div class="nav-toggle" id="nav-toggle"> ☰ </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="nav-dropdown">
+                <button class="dropdown-toggle">Artista ▾</button>
+                <ul class="dropdown-menu">
+                    <li><a href="artista.html">Biografía</a></li>
+                    <li><a href="galeria.html">Obras</a></li>
+                </ul>
+            </li>
+            <li><a href="obras/obras.html">Originales</a></li>
+            <li><a href="expo.html">Exposiciones</a></li>
+            <li><a href="talleres/taller.html">Actividades</a></li>
+            <li><a href="consulta.html">Consulta</a></li>
+            <li><a href="merch/merch.html">Mercancía</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="galeria-section">
+    <h1 class="titulo-seccion">Obra Completa</h1>
+    <div class="indicadores-container">
+        <h3 class="detalle-indicador">Haz clic en la obra para ver la ficha técnica</h3>
+        <span class="scroll-indicador">← Desliza para navegar →</span>
+    </div>
+    
+
+    <div class="galeria-bloque" data-categoria="pintura" id="pintura">
+        <div class="bloque-encabezado">
+            <h2 class="galeria-subtitulo">Pintura</h2>
+        </div>
+        <div class="galeria-relativo">
+            <button class="flecha-nav prev" onclick="scrollManual(this, -1)">&#10094;</button>
+            <div class="galeria-scroll-wrapper">
+                <div class="galeria-flex-container">
+                    <div class="galeria-item" data-titulo="Hierba mala nunca muere" data-tecnica="Oleo sobre tela" data-medidas="40 x 40 cm" data-anio="2025" data-precio="$3,000.00"><img src="img/galeria/hierba_pint.jpeg"></div>
+                    <div class="galeria-item" data-titulo="PESCADOR DE SUEÑOS - AUTORETRATO" data-tecnica="Oleo sobre tela" data-medidas="40 x 40 cm" data-anio="2024" data-precio="$3,000.00"><img src="img/galeria/sueños_pint.jpg"></div>
+                    <div class="galeria-item" data-titulo="Creencias de lo prohibido" data-tecnica="Oleo sobre tela" data-medidas="30 cm de diametro" data-anio="2025" data-precio="$1,900.00"><img src="img/galeria/creencias_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Nungún lugar" data-tecnica="Oleo sobre tela" data-medidas="40 x 40 cm" data-anio="2025" data-precio="$2,500.00"><img src="img/galeria/ningun_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="Torito Cornudo" data-tecnica="Oleo sobre tela" data-medidas="30 cm de diametro" data-anio="2025" data-precio="$2,300.00"><img src="img/galeria/torito_pint.png"></div>
+                    <div class="galeria-item" data-titulo="¿QUIEN DIJO QUE HAY UNA SEGUNDA VEZ?" data-tecnica="Óleo sobre tela" data-medidas="50 X 70 CM" data-anio="2025" data-precio="$5,300.00"><img src="img/galeria/quiente_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="Se busca un soporte" data-tecnica="Oleo sobre tela" data-medidas="25 cm de diametro" data-anio="2025" data-precio="$1,600.00"><img src="img/galeria/sebusca_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Amanita caesarea" data-tecnica="Acrilico" data-medidas="20 x 25 cm" data-anio="2025" data-precio="$1,000.00"><img src="img/galeria/amanita_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="Arráncame" data-tecnica="Oleo sobre tela" data-medidas="225 cm de diametro" data-anio="2025" data-precio="$1,700.00"><img src="img/galeria/arrancame_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Cuerpa en resistencia" data-tecnica="Oleo sobre tela" data-medidas="30 cm de diametro" data-anio="2025" data-precio="$1,900.00"><img src="img/galeria/cuerpa_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Chapultepec 1:00 pm" data-tecnica="Temple de Dextrina" data-medidas="15 x 29 cm" data-anio="2025" data-precio="$1,000.00"><img src="img/galeria/chapultepec_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="Mexclapique" data-tecnica="Tintas minerales" data-medidas="24 x 29 cm" data-anio="2025" data-precio="$1,400.00"><img src="img/galeria/mexclapique_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="La muerte de un grande" data-tecnica="Temple de Dextrina" data-medidas="30 x 40 cm" data-anio="2025" data-precio="$4,000.00"><img src="img/galeria/lamuerte_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Díptico: Promesa de un espacio" data-tecnica="Oleo sobre tela" data-medidas="60 x 100 cm" data-anio="2025" data-precio="$5,500.00"><img src="img/galeria/promesa_pint.JPG"></div>
+                    <div class="galeria-item" data-titulo="Besando el suelo y añorando vida" data-tecnica="Temple de Dextrina" data-medidas="30 x 40 cm" data-anio="2025" data-precio="$4,000.00"><img src="img/galeria/besandoelsuelo_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Vaho de anhelo" data-tecnica="Oleo sobre tela" data-medidas="40 x 40 cm" data-anio="2025" data-precio="$3,500.00"><img src="img/galeria/anhelo_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Engendrado por el mar" data-tecnica="Tecnica mixta" data-medidas="50 x 50 cm" data-anio="2026" data-precio="$5,000.00"><img src="img/galeria/engendrado_pint.png"></div>
+                    <div class="galeria-item" data-titulo="Un camino no Natural" data-tecnica="Mixta sobre tela" data-medidas="30 x 40 cm" data-anio="2025" data-precio="$4,500.00"><img src="img/galeria/caminoNoNatural_pint.png"></div>
+                    <div class="galeria-item" data-titulo="El brillo de la ciénega" data-tecnica="Oleo sobre Tela" data-medidas="30 x 40 cm" data-anio="2025" data-precio="$4,500.00"><img src="img/galeria/elbrillo_pint.jpeg"></div>
+                </div>
+            </div>
+            <button class="flecha-nav next" onclick="scrollManual(this, 1)">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="galeria-bloque" data-categoria="grafica" id="grafica">
+         <div class="bloque-encabezado">
+            <h2 class="galeria-subtitulo">Grafica</h2>
+         </div>
+        <div class="galeria-relativo">
+            <button class="flecha-nav prev" onclick="scrollManual(this, -1)">&#10094;</button>
+            <div class="galeria-scroll-wrapper">
+                <div class="galeria-flex-container">
+                    <div class="galeria-item" data-titulo="Aunque tu odies el mar y yo el cielo" data-tecnica="Linografia" data-medidas="48 x 58 cm" data-anio="2025"  data-precio="$4,000.00"><img src="img/galeria/aunque_grab.png"></div>
+                    <div class="galeria-item" data-titulo="Tubicola Mango" data-tecnica="Linografia" data-medidas="21 x 28 cm" data-anio="2024" data-precio="$1,000.00"><img src="img/galeria/tubicola_grab.png"></div>
+                    <div class="galeria-item" data-titulo="Robalo" data-tecnica="Litografía" data-medidas="49 x 56 cm" data-anio="2024" data-precio="$3,900.00"><img src="img/galeria/robalo_grab.JPG"></div>
+                    <div class="galeria-item" data-titulo="Zitácuaro a las 6:11 PM" data-tecnica="Foamboard" data-medidas="20 x 30 cm" data-anio="2025" data-precio="$1,000.00"><img src="img/galeria/zitacuaro_grab.jpg"></div>
+                    <div class="galeria-item" data-titulo="Patadas de ahogado" data-tecnica="Trovicel" data-medidas="20 x 30 cm" data-anio="2025" data-precio="$1,000.00"><img src="img/galeria/patadas_grab.jpeg"></div>
+                    <div class="galeria-item" data-titulo="EL SABRÁ LO QUE PERDIÓ" data-tecnica="Linografia" data-medidas="20 x 30 cm" data-anio="2024" data-precio="$1,000.00"><img src="img/galeria/elsabra_grab.jpg"></div>
+                    <div class="galeria-item" data-titulo="ALMA DE CAZÓN" data-tecnica="Linografia" data-medidas="20 x 30 cm" data-anio="2024" data-precio="$1,000.00"><img src="img/galeria/alma_grab.jpg"></div>
+                    <div class="galeria-item" data-titulo="Corona Negra" data-tecnica="Monotipo en tetrapack" data-medidas="35 x 42 cm" data-anio="2025" data-precio="$3,000.00"><img src="img/galeria/corona_grab.JPG"></div>
+                    <div class="galeria-item" data-titulo="La corriente" data-tecnica="Punta seca en acrilico" data-medidas="35 x 42 cm" data-anio="2025" data-precio="$3,000.00"><img src="img/galeria/corriente_grab.jpg"></div>
+                    <div class="galeria-item" data-titulo="La travesía del tiburón" data-tecnica="Punta seca en acrilico" data-medidas="35 x 42 cm" data-anio="2023" data-precio="$2,000.00"><img src="img/galeria/travesiatiburon_grab.jpg"></div>
+                    <div class="galeria-item" data-titulo="¿SOY HUMANX?" data-tecnica="Monotipo en serigrafía" data-medidas="35 x 42 cm" data-anio="2025" data-precio="$2,900.00"><img src="img/galeria/soyhumano_grab.jpeg"></div>
+                    <div class="galeria-item" data-titulo="Una espora" data-tecnica="Litografía" data-medidas="35 x 42 cm" data-anio="2025" data-precio="$3,000.00"><img src="img/galeria/espora_grab.jpg"></div>
+                </div>
+            </div>
+            <button class="flecha-nav next" onclick="scrollManual(this, 1)">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="galeria-bloque" data-categoria="dibujo" id="dibujo">
+        <div class="bloque-encabezado">
+            <h2 class="galeria-subtitulo">Dibujo</h2>
+        </div>
+        <div class="galeria-relativo">
+            <button class="flecha-nav prev" onclick="scrollManual(this, -1)">&#10094;</button>
+            <div class="galeria-scroll-wrapper">
+                <div class="galeria-flex-container">
+                    <div class="galeria-item" data-titulo="Historia en escamas" data-tecnica="Punta de plata" data-medidas="33 x 42 cm" data-anio="2024" data-precio="$2,700.00"><img src="img/galeria/escamas_dib.JPG"></div>
+                    <div class="galeria-item" data-titulo="Registros en Movimiento" data-tecnica="Punta de plata" data-medidas="24 x 32 cm" data-anio="2025" data-precio="$2,200.00"><img src="img/galeria/registros_dib.JPG"></div>
+                    <div class="galeria-item" data-titulo="El viento en tu contra" data-tecnica="Lápiz de color" data-medidas="20 x 30 cm" data-anio="2025" data-precio="$2,200.00"><img src="img/galeria/vientoencontra_dib.JPG"></div>
+                    <div class="galeria-item" data-titulo="Fauna endémica de la reserva de la biosfera del archipiélago de Revillagigedo" data-tecnica="Grafito" data-medidas="33 x 42cm" data-anio="2025" data-precio="$2,700.00"><img src="img/galeria/endemica_dib.jpeg"></div>
+                    <div class="galeria-item" data-titulo="Cráneo de delfín" data-tecnica="Punta de plata" data-medidas="24 x 32 cm" data-anio="2024" data-precio="$2,200.00"><img src="img/galeria/craneo_dib.jpg"></div>
+                    <div class="galeria-item" data-titulo="Mariposa hojarasca tropical Anaea aidea" data-tecnica="Lápiz de color" data-medidas="20 x 30 cm" data-anio="2024" data-precio="$2,200.00"><img src="img/galeria/mariposa_dib.jpg"></div>
+                </div>
+            </div>
+            <button class="flecha-nav next" onclick="scrollManual(this, 1)">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="galeria-bloque" data-categoria="escultura" id="escultura">
+        <div class="bloque-encabezado">
+            <h2 class="galeria-subtitulo">Escultura</h2>
+        </div>
+        <div class="galeria-relativo">
+            <button class="flecha-nav prev" onclick="scrollManual(this, -1)">&#10094;</button>
+            <div class="galeria-scroll-wrapper">
+                <div class="galeria-flex-container">
+                    <div class="galeria-item" data-titulo="Dejarse Hundir" data-tecnica="Engobe y esmalte" data-medidas="5x 10 x 9 cm" data-anio="2025"><img src="img/galeria/dejarse_esc.png"></div>
+                    <div class="galeria-item" data-titulo="Mariposa" data-tecnica="Acuarela" data-medidas="40 x 50 cm" data-anio="2022"><img src="img/galeria/lagunas_esc.png"></div>
+                    <div class="galeria-item" data-titulo="Periquito" data-tecnica="Acuarela" data-medidas="40 x 50 cm" data-anio="2022"><img src="img/galeria/arrecifes_esc.png"></div>
+                </div>
+            </div>
+            <button class="flecha-nav next" onclick="scrollManual(this, 1)">&#10095;</button>
+        </div>
+    </div>
+
+    <div class="galeria-bloque" data-categoria="mural" id="mural">
+        <div class="bloque-encabezado">
+            <h2 class="galeria-subtitulo">Mural</h2>
+        </div>
+        <div class="galeria-relativo">
+            <button class="flecha-nav prev" onclick="scrollManual(this, -1)">&#10094;</button>
+            <div class="galeria-scroll-wrapper">
+                <div class="galeria-flex-container">
+                    <div class="galeria-item" data-titulo="Colibrí" data-tecnica="Mural" data-medidas="Variables" data-anio="2024"><img src="img/galeria/colibri1_mural.png"></div>
+                    <div class="galeria-item" data-titulo="Colibrí" data-tecnica="Mural" data-medidas="Variables" data-anio="2024"><img src="img/galeria/colibri2_mural.png"></div>
+                </div>
+            </div>
+            <button class="flecha-nav next" onclick="scrollManual(this, 1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<div class="galeria-lightbox" id="galeria-lightbox">
+    <span class="galeria-cerrar">&times;</span>
+    <div class="galeria-lightbox-contenido">
+        <img id="galeria-img" src="" alt="">
+        <div class="galeria-ficha">
+            <h3 id="galeria-titulo-obra"></h3>
+            <p id="galeria-tecnica"></p>
+            <p id="galeria-medidas"></p>
+            <p id="galeria-anio"></p>
+            <p id="galeria-precio"></p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-redes">
+            <a href="https://www.instagram.com/thiagomar_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61562899717440" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@thiagoomar_" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <p class="footer-copy">© 2026 Thiago Mar — Todos los derechos reservados</p>
+
+        <p class="footer-creadora">
+            Diseño y Desarrollo por <a href="https://instagram.com/eledithgs" target="_blank">@eledithgs</a>
+        </p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

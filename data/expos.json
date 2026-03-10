@@ -1,0 +1,16 @@
+[
+  {
+    "titulo": "Aproximaciones del Natural",
+    "lugar": "Ciudad de México",
+    "fecha": "2026-02-04",
+    "imagen": "img/DelNat.png",
+    "descripcion": "Dibuja la biodiversidad"
+  },
+  {
+    "titulo": "Curanderas",
+    "lugar": "Tepozotlán",
+    "fecha": "2025-01-31",
+    "imagen": "img/curanderas.png",
+    "descripcion": "Un saber ancestral"
+  }
+]

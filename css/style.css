@@ -1,0 +1,2527 @@
+/* =====================================================
+   GENERAL
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F2D8C2;
+}
+
+section{
+    padding: 40px;
+}
+
+.logo{
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.titulo-seccion {
+    margin-top: 50px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 300; /* Más delgada para que sea elegante */
+    text-transform: uppercase;
+    letter-spacing: 8px; /* Espaciado artístico */
+    color: #1a1a1a;
+    position: relative;
+}
+
+/* Una línea sutil debajo */
+.titulo-seccion::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #5d4037;
+    margin: 15px auto 0;
+}
+
+/* =====================================================
+   NAV PRINCIPAL LIMPIO
+===================================================== */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;
+    z-index: 2000;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+}
+
+/* LOGO */
+
+.nav-logo img {
+    height: 90px;
+}
+
+/* MENU */
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a,
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover completo */
+
+.nav-menu a:hover,
+.dropdown-toggle:hover {
+    background: wheat;
+    color: black;
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: black;
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    min-width: 170px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px;
+    color: white;
+}
+
+.dropdown-menu li a:hover {
+    background: wheat;
+    color: black;
+}
+
+/* Se abre con clase activa */
+
+.nav-dropdown.active .dropdown-menu {
+    display: flex;
+}
+
+/* =========================
+   HAMBURGUESA
+========================= */
+
+.nav-toggle {
+    display: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+/* =========================
+NAV RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 75px;
+        right: -100%;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        padding: 50px 0;
+        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-dropdown.active .dropdown-menu {
+        position: static;
+        width: 100%;
+        text-align: center;
+        background: #111;
+    }
+
+    .dropdown-menu {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-radius: 8px;
+    }
+}
+
+/* =========================
+   PARA QUE EL HERO NO QUEDE TAPADO
+========================= */
+
+body {
+    padding-top: 75px;
+}
+
+/* =====================================================
+   INICIO
+===================================================== */
+/* PARALLAX */
+.parallax {
+    height: 650px; /* Altura de las secciones de imagen */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+/* IDs para las imágenes de fondo del Index */
+#fondo1 { height: 90vh; background-image: url("../img/thiagomar.jpg"); animation: zoomHero 10s infinite alternate ease-in-out;transition: background-image 1.2s ease-in-out; }
+#fondo2 { background-image: url("../img/fondo.jpg"); }
+#fondo3 { background-image: url("../img/obra1.png"); }
+#fondo4 { background-image: url("../img/obra2.png"); }
+#fondo5 { background-image: url("../img/obra3.png"); }
+
+#fondo1, #fondo2, #fondo3, #fondo4, #fondo5 {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+    /*Si no funciona descomentar*/
+    /*will-change: transform; 
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    transform: translateZ(0);
+    */
+}
+
+/* El contenedor Trigo que separa las fotos */
+.contenido { 
+    padding: 40px 10%; 
+    background-color: wheat; 
+    text-align: center; 
+    position: relative;
+    z-index: 5;
+}
+
+
+/*para los telefonos desactiven */
+/*@media (pointer: coarse) {
+    .parallax, #fondo1, #fondo2, #fondo3, #fondo4, #fondo5 {
+        background-attachment: scroll !important;
+        background-position: center; 
+    }
+} */
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    position: relative;
+    transition: background-image 0.8s ease-in-out;
+    height: 80vh;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-slider {
+    position: relative;
+    height: 100%;
+   
+}
+
+.hero-activa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+    
+}
+
+.hero-texto {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-texto h1 {
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+.hero-texto p {
+    margin-top: 15px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+@keyframes zoomHero {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/*  FRASE */
+.quote-principal {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #333;
+    max-width: 850px;
+    margin: 0 auto;
+    display: block;
+    line-height: 1.6;
+    font-family: 'Georgia', serif;
+    border: none;
+}
+
+/* =========================
+   HERO Y PARALLAX RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+    .hero-texto h1 {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+    .hero-texto p {
+        font-size: 14px;
+    }
+    #fondo1 { height: 70vh; }
+
+    .parallax {
+        height: 450px; 
+    }
+    .quote-principal {
+        font-size: 1.3rem;
+        padding: 0 20px;
+    }
+}
+
+/* =========================
+   ÚLTIMOS PROYECTOS
+========================= */
+
+.inicio-ultimos {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.inicio-ultimos-titulo {
+    padding: 10px 1%;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.inicio-ultimos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.inicio-card {
+    flex: 1; 
+    min-width: 300px; 
+    max-width: 450px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.inicio-card img {
+    width: 100%;
+    height: 300px; /* Ajusta esta altura según prefieras */
+    object-fit: contain; /* Muestra la imagen completa sin recortarla */
+    background-color: wheat; /* Un fondo sutil por si el póster es muy angosto */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.inicio-card img:hover {
+    transform: scale(1.03);
+}
+
+.inicio-card-titulo {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.inicio-card-sub {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin: 8px 0 20px 0;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.inicio-boton {
+    padding: 10px 28px;
+    border: 1px solid black;
+    background: black;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.inicio-boton:hover {
+    background: brown;
+    color: white;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .inicio-card {
+        width: 80%; /* Un poco más estrecho */
+        margin: 20px auto;
+    }
+}
+
+/* =========================
+   CATEGORÍAS
+========================= */
+.categorias {
+    padding: 80px 10%;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.container_inicio {
+    display: grid;
+    /* En PC: Forzamos 4 columnas iguales */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.card_inicio {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    text-decoration: none;
+}
+
+.card_inicio img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s ease;
+}
+
+/* Texto encima */
+.card_inicio span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+/* Hover efecto */
+.card_inicio:hover img {
+    transform: scale(1.1);
+}
+
+.card_inicio:hover span {
+    opacity: 1;
+}
+
+/* Efecto galería elegante */
+.container_inicio:hover .card_inicio {
+    opacity: 0.4;
+}
+
+.container_inicio .card_inicio:hover {
+    opacity: 1;
+}
+/* RESPONSIVE CATEGORÍAS */
+@media (max-width: 900px) {
+    .container_inicio {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+        padding: 0 5%;
+    }
+    .card_inicio img {
+        height: 200px; /* Reducimos altura en móvil */
+    }
+    .card_inicio span {
+        font-size: 1rem; /* Texto más pequeño */
+        opacity: 1; /* Que el nombre sea visible siempre en móvil */
+        background: rgba(0,0,0,0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    .container_inicio {
+        grid-template-columns: 1fr; /* 1 columna en celulares pequeños */
+    }
+    .card_inicio img { height: 250px; }
+    .card_inicio span {
+        font-size: 1rem; /* Texto más pequeño */
+        opacity: 1; /* Que el nombre sea visible siempre en móvil */
+        background: rgba(0,0,0,0.3);
+    }
+}
+
+/* =========================
+   MINI BIO ARTISTA
+========================= */
+
+.mini-bio {
+    padding: 40px 10%;
+    position: relative;
+    background-image: none; /* Quitamos la imagen */
+    background-color: transparent; /* Hereda el fondo del body */
+}
+
+/* Overlay */
+.mini-bio::before {
+    display: none; 
+}
+
+.mini-bio-contenedor {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Imagen lateral */
+.mini-bio-imagen img {
+    width: 70%;
+    border-radius: 12px;
+}
+
+.mini-bio-texto h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #222; /* Texto oscuro */
+}
+
+.mini-bio-texto p {
+    color: #444; /* Texto oscuro */
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.mini-bio-btn {
+    display: inline-block;
+    padding: 40px 60px; /* Un poco más de aire para la mancha */
+    background-color: black; /* Color inicial */
+    color: white;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    font-weight: bold;
+    text-align: center;
+    -webkit-mask-image: url('../img/brochazo.png');
+    mask-image: url('../img/brochazo.png');
+    -webkit-mask-size: 100% 100%; /* Estira la mancha al tamaño del botón */
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.mini-bio-btn:hover {
+    background-color: brown; /* Cambia el color del brochazo al pasar el mouse */
+    color: wheat;
+    transform: scale(1.05) rotate(-1deg);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .mini-bio-contenedor {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .mini-bio-texto p {
+        margin: 0 auto 30px auto;
+    }
+    .mini-bio-imagen img {
+        width: 100%; /* Imagen al ancho completo del contenedor */
+        max-width: 400px;
+    }
+
+}
+
+/* =====================================================
+   SECCIÓN CONTACTO INICIO 
+===================================================== */
+/* 1. Contenedor Principal: Centrado y al ras */
+.contacto-info-inicio {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0; 
+}
+
+.contacto-info-inicio h1 {
+    font-size: 2.2rem;
+    color: #5d4037;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.contacto-texto-inicio {
+    max-width: 600px;
+    margin: 0 auto 30px auto; 
+    color: #795548;
+    line-height: 1.5;
+}
+
+/* 2. Contenedor de Iconos: Flexbox para centrar horizontalmente */
+.contacto-redes-grandes-inicio {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 60px; 
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+/* 3. Estilo de los Enlaces (Quitar subrayado de link) */
+.contacto-redes-grandes-inicio .red {
+    text-decoration: none !important; /* Quita la línea de link */
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 4. Estilo de los Logos (Iconos FontAwesome) */
+.contacto-redes-grandes-inicio .red i {
+    display: inline-block !important;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-size: 50px; 
+    color: #5d4037 !important; /* Café unificado */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* 5. OCULTAR EL TEXTO (Instagram, Facebook, etc.) */
+.contacto-redes-grandes-inicio .red span {
+    display: none !important; /* Desaparece el texto linkeado */
+}
+
+/* 6. Efecto Hover (Interacción) */
+.contacto-redes-grandes-inicio .red:hover i {
+    transform: translateY(-5px);
+    color: #a0522d !important; /* Café más cálido al pasar el mouse */
+}
+
+/* =========================
+   RESPONSIVE MÓVIL
+========================= */
+@media (max-width: 768px) {
+    .contacto-redes-grandes-inicio {
+        gap: 40px; /* Un poco más juntos en móvil */
+    }
+    
+    .contacto-redes-grandes-inicio .red i {
+        font-size: 45px; /* Tamaño optimizado para celular */
+    }
+
+    .contacto-info-inicio h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ==========================================================
+   GALERÍA 
+========================================================== */
+/* Centrado del título principal */
+.titulo-seccion {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 40px 0 10px 0;
+}
+
+/* Contenedor de indicadores: evitamos flex para no afectar el flujo */
+.indicadores-container {
+    text-align: center;   /* Esto centra el texto por defecto */
+    width: 100%;
+    margin-bottom: 50px;  /* Espacio para que no se pegue a las fotos */
+    display: block;       /* Aseguramos que sea un bloque independiente */
+}
+
+/* Estilo para los textos internos */
+.detalle-indicador {
+    display: block;       /* Para que ocupe su propia línea */
+    margin: 0 auto;       /* Centrado */
+    font-size: 0.95rem;
+    color: #5d4037;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.scroll-indicador {
+    display: block;       /* Para que ocupe su propia línea */
+    margin: 5px auto 0;
+    font-size: 0.85rem;
+    color: #7a5b4f;
+    font-style: italic;
+}
+
+/* Animación sutil de "vaivén" para el indicador de deslizar */
+@keyframes flechitas {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+.scroll-indicador {
+    display: inline-block;
+    animation: flechitas 2s infinite ease-in-out;
+}
+
+/* Contenedor del subtítulo */
+.bloque-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Todo a la izquierda */
+    margin: 60px 0 30px 5%;  /* Un pequeño margen del 5% para que no pegue al borde */
+    width: 90%;              /* Que no toque los bordes totales */
+}
+
+.galeria-subtitulo {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;     /* Espaciado entre letras para toque artístico */
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 300;        /* Más delgado se ve más moderno */
+    position: relative;
+}
+
+/* La línea divisora minimalista */
+.bloque-encabezado::after {
+    content: "";
+    width: 100%;             /* Línea que cruza casi toda la pantalla */
+    height: 1px;
+    background: linear-gradient(to right, #5d4037, rgba(93, 64, 55, 0.1)); /* Se desvanece al final */
+    margin-top: 5px;
+}
+
+
+
+/* --------------*/
+/* Contenedor que envuelve la banda y las flechas */
+.galeria-relativo {
+    position: relative;
+    width: 100%;
+    margin-bottom: 50px; /* Espacio entre secciones de obra */
+}
+
+/* La banda que se desliza */
+.galeria-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll manual siempre */
+    overflow-y: hidden;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Suavidad total en iPhone */
+    cursor: grab;
+    touch-action: pan-x; /* Crucial: le dice al móvil que solo use el dedo para mover de lado */
+    -webkit-user-drag: none; /* Evita que las imágenes se "arrastren" como archivos */
+}
+
+/* Ocultar la barra de scroll para que parezca una banda profesional */
+.galeria-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.galeria-scroll-wrapper:active {
+    cursor: grabbing;
+}
+
+/* El contenedor interno que sostiene las fotos en fila */
+.galeria-flex-container {
+    display: flex;
+    gap: 25px;
+    padding: 0 40px; /* Margen para que la primera foto no pegue al borde */
+    width: max-content; 
+}
+
+/* Cada cuadro individual */
+.galeria-item {
+    flex: 0 0 auto;
+    width: 350px; /* Tamaño PC */
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    display: block;
+    pointer-events: none; /* Evita que el clic en la imagen bloquee el arrastre */
+}
+
+.galeria-item:hover img {
+    transform: scale(1.02);
+}
+
+/* ==========================================================
+   FLECHAS (Solo aparecen en PC)
+========================================================== */
+@media (min-width: 769px) {
+    .flecha-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        transition: 0.3s;
+    }
+    
+    .flecha-nav:hover { background: #a65a0d; }
+    .flecha-nav.prev { left: 15px; }
+    .flecha-nav.next { right: 15px; }
+}
+
+/* ==========================================================
+   AJUSTES PARA TELÉFONO (RESPONSIVO)
+========================================================== */
+@media (max-width: 768px) {
+    .galeria-flex-container {
+        padding: 0 20px; /* Menos margen en móvil */
+        gap: 15px;
+    }
+
+    .galeria-item {
+        width: 80vw; /* El cuadro ocupa casi toda la pantalla */
+    }
+
+    .galeria-item img {
+        height: 250px; /* Más impacto visual en vertical */
+    }
+
+    /* En móvil ocultamos flechas para que el dedo tenga todo el espacio */
+    .flecha-nav {
+        display: none !important;
+    }
+}
+/* ===== GALERIA LIGHTBOX ===== */
+
+.lightbox-contexto {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 10002;
+    text-align: center;
+    pointer-events: none; /* Para que no estorbe al hacer clic */
+}
+
+#lb-seccion {
+    font-weight: bold;
+    color: #fff;
+}
+
+.galeria-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95); /* Más oscuro para centrar la atención */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.galeria-lightbox-contenido {
+    background: transparent;
+    max-width: 1200px; /* Más ancho para escritorio */
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* Más espacio entre imagen y ficha */
+    color: white;
+}
+
+.galeria-lightbox img {
+    max-width: 75%; /* Imagen más grande en escritorio */
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    transition: color 0.3s, background 0.3s;
+    z-index: 10001;
+}
+
+.lightbox-nav:hover {
+    color: white;
+}
+
+.lightbox-nav.prev { left: 10px; }
+.lightbox-nav.next { right: 10px; }
+
+.galeria-ficha {
+    max-width: 350px;
+}
+
+.galeria-ficha h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+}
+
+.galeria-ficha p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.galeria-cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 45px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10000;
+}
+
+/* ==========================================================
+   Responsivo
+========================================================== */
+@media (max-width: 768px) {
+    .galeria-lightbox {
+        align-items: center; /* Centra todo el bloque en la pantalla */
+        overflow-y: auto;
+    }
+
+    .lightbox-contexto {
+        top: auto;
+        bottom: 20px; /* En móvil lo pasamos abajo para liberar espacio arriba */
+        font-size: 12px;
+        background: rgba(0,0,0,0.6);
+        padding: 5px 15px;
+        border-radius: 20px;
+    }
+
+    .galeria-lightbox-contenido {
+        flex-direction: column; /* Apila imagen arriba, texto abajo */
+        gap: 15px;
+        width: 90%;
+        padding-top: 50px; /* Espacio para la X de cerrar */
+    }
+
+    .galeria-lightbox img {
+        max-width: 100%;
+        max-height: 45vh; /* Limita la imagen a la mitad de la pantalla */
+        width: auto;
+    }
+
+    .lightbox-nav {
+        top: 40%; /* Subir flechas para que coincidan con la imagen */
+        font-size: 30px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 5px;
+    }
+
+    .galeria-ficha {
+        width: 100%;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.05); /* Fondo sutil para separar del fondo negro */
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center; /* Centramos el texto en móvil para mejor estética */
+    }
+
+    .galeria-ficha h3 {
+        font-size: 20px;
+    }
+
+    .galeria-ficha p {
+        font-size: 14px;
+    }
+
+    .galeria-cerrar {
+        top: 10px;
+        right: 20px;
+        font-size: 40px;
+        background: rgba(0,0,0,0.5); /* Círculo oscuro detrás de la X para que siempre se vea */
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+}
+
+
+/* =====================================================
+   ARTISTA
+===================================================== */
+
+
+.pagina-artista::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 7, 7, 0.164); /* ajusta opacidad */
+    z-index: -1;
+}
+
+.pagina-artista {
+    background-image: url("../img/fondo2.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.artista {
+    padding: 80px 10%;
+    color: rgb(255, 255, 255);
+}
+
+/* HEADER */
+
+.artista-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.nombre-artista {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-family:'Trebuchet MS', sans-serif;
+}
+
+.frase-artista {
+    font-size: 18px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* CONTENIDO EN DOS COLUMNAS */
+
+.artista-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 70px;
+    align-items: start;
+    text-align: justify;
+}
+
+/* IMAGEN */
+
+.artista-imagen img {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15%;
+}
+
+/* TEXTO */
+
+.artista-texto {
+    max-width: 650px;
+}
+
+.artista-texto h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 35px;
+}
+
+.artista-texto p {
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+/* FIRMA */
+
+.firma-artista {
+    margin-top: 80px;
+    text-align: right;
+}
+
+.firma-artista img {
+    width: 120px;
+    opacity: 0.9;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .artista {
+        padding: 60px 8%;
+    }
+
+    .artista-contenido {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nombre-artista {
+        font-size: 34px;
+    }
+
+    .artista-texto {
+        max-width: 100%;
+    }
+
+    .artista-imagen{
+        text-align: center;
+    }
+
+    .firma-artista {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .firma-artista img {
+        width: 90px;
+    }
+    .artista-imagen img {
+        margin-top: 0;
+        max-width: 300px;
+    }
+
+}
+
+/* =========================
+   PROYECTOS Artista Collage
+========================= */
+.titulo-proyectos {
+    text-align: center;
+    font-size: 34px;
+    color: wheat;
+    margin-bottom: 60px;
+    padding: 20px;
+    background: brown;
+    letter-spacing: 2px;
+}
+
+.collage-proyectos {
+    column-count: 4;
+    column-gap: 20px;
+    padding: 60px 10%;
+}
+
+.proyecto-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.proyecto-item img {
+    width: 100%;
+    display: block;
+    transition: 0.4s ease;
+}
+
+@media (max-width: 900px) {
+    .collage-proyectos {
+        column-count: 2;
+        padding: 40px 5%;
+    }
+}
+
+@media (max-width: 500px) {
+    .collage-proyectos {
+        column-count: 1;
+    }
+}
+
+/* Overlay */
+.overlay-proyecto {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 15px;
+
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.proyecto-item:hover img {
+    transform: scale(1.08);
+}
+
+.proyecto-item:hover .overlay-proyecto {
+    opacity: 1;
+}
+
+/* 📱 RESPONSIVE PROYECTOS */
+
+@media (max-width: 900px) {
+
+    .collage-proyectos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .overlay-proyecto {
+        opacity: 1; /* siempre visible en móvil */
+        background: rgba(0,0,0,0.5);
+    }
+
+}
+
+/* =====================================================
+   SECCIÓN ORIGINALES (Obras en venta)
+===================================================== */
+
+.seccion-originales {
+    display: flex;             
+    flex-wrap: wrap;           
+    flex-direction: column;    /* Alinea título arriba y grid abajo */
+    align-items: center;       
+    padding: 60px 10%;
+    background-image: url("../img/fondo1.png");
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Título único para Originales */
+.titulo-originales {
+    text-align: center;
+    width: 100%;
+    font-size: 2.5rem;
+    color: black;     
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    font-family: inherit; /* O la que uses para tus headers */
+}
+
+/* Contenedor de las tarjetas */
+.originales-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Tarjeta individual */
+.originales-card {
+    background-color: rgba(255, 255, 255, 0.4); /* Un poco más de contraste */
+    backdrop-filter: blur(5px); /* Efecto moderno sobre el fondo */
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px; /* Ancho fijo para control */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.originales-card:hover {
+    transform: translateY(-8px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.originales-imagen {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.originales-imagen img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.originales-card h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.originales-precio {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #5d4037; /* Ese tono café que te gusta */
+}
+
+/* -----------------------
+originales
+------------------------ */
+.btn-originales {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 1px solid black;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: black;
+    background: transparent;
+    transition: all 0.3s ease;
+    align-self: center;
+}
+
+.btn-originales:hover {
+    background-color: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Responsive para el grid de originales */
+@media (max-width: 768px) {
+    .originales-card {
+        width: 100%; /* Una sola columna en móvil */
+        max-width: 350px;
+    }
+}
+
+/* DETALLE OBRA */
+
+.detalle-obra{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 120px 10%;
+    align-items: center;
+}
+
+.imagen-obra img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+.precio-obra {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* ETIQUETAS */
+
+.etiquetas-obra {
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    background: brown;
+    border: 1px solid #ddd;
+}
+
+.badge.agotado {
+    background: #000;
+    color: white;
+}
+
+/* BOTÓN GRANDE */
+
+.btn-obra-grande {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 28px;
+    border-radius: 40px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-obra-grande:hover {
+    background: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .detalle-obra {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .info-extra{
+        margin-top: 20px;
+        font-size: 11px;
+
+    }
+}
+
+/* =====================================================
+   EXPOSICIONES
+===================================================== */
+
+.cartelera-expos {
+    column-count: 3; /* 3 columnas en PC */
+    column-gap: 30px;
+    padding: 50px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.poster-expo {
+    display: inline-block; /* Crucial para que no se corten entre columnas */
+    width: 100%;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05); /* Efecto cuadro colgado */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+}
+.poster-expo img {
+    width: 100%;
+    height: auto; /* Mantiene proporción original */
+    border-radius: 2px;
+    filter: sepia(0.2); /* Toque artístico vintage */
+    transition: 0.4s;
+}
+.poster-expo:hover img {
+    filter: sepia(0);
+}
+
+.poster-expo:hover {
+    transform: translateY(-10px) rotate(1deg); /* Se mueve como un cuadro real */
+    box-shadow: 15px 15px 30px rgba(0,0,0,0.1);
+}
+
+.detalle-expo {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    margin-top: 15px;
+}
+
+.poster-expo::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    background: rgba(210, 180, 140, 0.5); /* Color cinta canela semi-transparente */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    z-index: 5;
+}
+
+.poster-expo.activa .detalle-expo {
+    max-height: 1200px;
+    padding: 20px 10px;
+    border-top: 1px dashed brown;
+    margin-top: 15px;
+}
+.detalle-expo h2 {
+    margin-bottom: 5px;
+}
+
+.detalle-expo p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.detalle-expo iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) { .cartelera-expos { column-count: 2; } }
+@media (max-width: 600px) { .cartelera-expos { column-count: 1; } }
+/* =====================================================
+   TALLERES Y ACTIVIDADES
+===================================================== */
+
+.galeria-taller {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    position: relative; /* IMPORTANTE para que el ★ DESTACADO se posicione bien */
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 250px; /* Un poco más bajo para que quepa más info */
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* BOTÓN */
+.btn-detalle {
+    margin-top: 10px;
+    padding: 8px 18px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-detalle:hover {
+    background: #444;
+}
+
+/* BADGES */
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.taller-badge {
+    background: #2c7a7b;
+}
+
+.actividad-badge {
+    background: #805ad5;
+}
+
+.convocatoria-badge {
+    background: #c53030;
+}
+
+/* FILTROS */
+
+.filtros {
+    text-align: center;
+    margin: 20px 0;
+    
+}
+
+.filtros button {
+    padding: 8px 18px;
+    margin: 5px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.filtros button:hover {
+    background: #444;
+}
+
+.card.fijado {
+    border: 3px solid brown; 
+    transform: scale(1.02); /* Lo hace resaltar físicamente */
+    z-index: 1;
+}
+
+.card.fijado::before {
+    content: "★ DESTACADO";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: brown;
+    color: wheat;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 5px;
+    z-index: 20;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.card.evento-pasado {
+    opacity: 0.6; /* Se ve un poco transparente */
+    filter: grayscale(0.5); /* Pierde un poco de color */
+    pointer-events: none; /* Opcional: para que no puedan dar clic al botón */
+}
+
+.card.evento-pasado::after {
+    content: "FINALIZADO";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    border: 2px solid white;
+    z-index: 5;
+}
+
+.card.lleno {
+    position: relative;
+}
+
+/* Oscurecemos un poco la imagen para que el texto resalte */
+.card.lleno img {
+    filter: brightness(0.7) grayscale(0.3);
+}
+
+/* Creamos el sello de "CUPO LLENO" */
+.card.lleno::after {
+    content: "CUPO LLENO";
+    position: absolute;
+    top: 20%; /* Lo ponemos sobre la imagen */
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-10deg); /* Un poco chueco para que parezca sello */
+    background: #c53030; /* Rojo vibrante */
+    color: white;
+    padding: 8px 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px double white; /* Doble borde estilo sello */
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+.card.lleno .btn-detalle {
+    background: gray !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+    .galeria-taller {
+        /* En móvil, una sola columna bien centrada */
+        grid-template-columns: 1fr; 
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .card {
+        max-width: 100%; /* Que use todo el ancho del cel */
+    }
+
+    .card img {
+        height: 200px; /* Imágenes más bajas en cel para no hacer tanto scroll */
+    }
+}
+
+/* =========================================
+   PÁGINA DE EVENTOS Y CONVOCATORIAS
+   ========================================= */
+
+/* --- Contenedor Principal (Header del Evento) --- */
+.evento-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 100px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.evento-imagen {
+    text-align: center;
+}
+
+.evento-imagen img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transition: 0.4s ease-in-out;
+}
+
+.evento-imagen img:hover {
+    transform: scale(1.02);
+}
+
+/* --- Etiquetas (Badges) --- */
+.evento-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.taller-evento { background: #2c7a7b; }
+.actividad-evento { background: #805ad5; }
+.convocatoria-evento { background: #c53030; }
+
+/* --- Tipografía y Datos --- */
+.evento-titulo {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+    line-height: 1.1;
+}
+
+.evento-datos p {
+    margin: 15px 0;
+    font-size: 15px;
+    color: #444;
+}
+
+.evento-datos i {
+    width: 25px; /* Alineación de iconos */
+    color: #a65a0d;
+}
+
+.evento-precio {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #000;
+}
+
+/* --- Botón de Acción --- */
+.btn-evento {
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 35px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-evento:hover {
+    background: #03943d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(3, 148, 61, 0.2);
+}
+
+.evento-nota {
+    font-size: 13px;
+    margin-top: 15px;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* --- Bloques de Contenido Inferior --- */
+.evento-bloque {
+    padding: 80px 10%;
+}
+
+.bloque-contenido {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Títulos de sección unificados */
+.evento-bloque h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #a65a0d;
+}
+
+/* Fondos de bloques */
+.evento-resaltado {
+    background-color: rgba(166, 90, 13, 0.08);
+    border-top: 1px solid rgba(166, 90, 13, 0.1);
+    border-bottom: 1px solid rgba(166, 90, 13, 0.1);
+}
+
+.evento-gris { /* Mantengo el nombre pero suavizo el tono */
+    background: #f4f4f4;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* Listas con check */
+.lista-check {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-check li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+}
+
+.lista-check i {
+    color: #2c7a7b;
+    font-size: 0.9rem;
+}
+
+/* Mapa */
+.evento-mapa iframe {
+    width: 100%;
+    height: 400px;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* --- Específicos de Convocatoria --- */
+.intro-texto {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    border-left: 4px solid #c53030;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+.pasos-convocatoria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.paso {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.paso-numero {
+    font-family: 'Splash', cursive;
+    font-size: 2.5rem;
+    color: rgba(197, 48, 48, 0.15); /* Bajé opacidad para legibilidad */
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.paso h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #222;
+}
+
+/* Colaboraciones */
+.evento-colaboracion {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.logos-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Para que no se amontonen en móvil */
+}
+
+.logos-flex img {
+    height: 55px;
+    object-fit: contain;
+    filter: grayscale(0.5);
+    transition: 0.3s;
+}
+
+.logos-flex img:hover {
+    filter: grayscale(0);
+}
+
+.separador-x {
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .evento-container {
+        grid-template-columns: 1fr;
+        padding: 50px 5%;
+        text-align: center;
+    }
+
+    .evento-bloque {
+        padding: 50px 7%;
+    }
+
+    .evento-datos p {
+        justify-content: center;
+        display: flex;
+        gap: 8px;
+    }
+
+    .logos-flex {
+        gap: 20px;
+    }
+}
+
+/* =====================================================
+   MERCH
+===================================================== */
+
+.galeria-merch {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    padding: 60px 10%;
+}
+
+.producto-item {
+    text-align: center;
+}
+
+.producto-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.producto-item img:hover {
+    transform: scale(1.02);
+}
+
+/* BOTÓN SOLO MERCH */
+
+.btn-merch-art {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-merch-art:hover {
+    background: black;
+    color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+    .galeria-merch {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria-merch {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+}
+
+.titulo-producto {
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   DETALLE PRODUCTO
+========================= */
+
+.producto-detalle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 80px 10%;
+    align-items: center;
+}
+
+/* GALERÍA */
+
+.producto-galeria {
+    position: relative;
+}
+
+/* =========================
+   CARRUSEL PROFESIONAL
+========================= */
+
+.producto-galeria {
+    width: 100%;
+    max-width: 500px;
+}
+
+.carrusel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carrusel-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.carrusel-track img {
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+
+/* BOTONES SOBRE IMAGEN */
+
+.carrusel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    border: none;
+    color: white;
+    font-size: 28px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.carrusel button:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* DOTS */
+
+.dots {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dots span.active {
+    background: white;
+}
+
+@media (max-width: 768px) {
+    .carrusel button {
+        font-size: 22px;
+    }
+}
+
+/* INFO */
+
+.producto-info h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.producto-precio {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.producto-descripcion {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.producto-tallas span {
+    font-weight: bold;
+}
+
+.producto-tallas p {
+    margin-top: 8px;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+.btn-producto {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 35px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+.btn-producto:hover {
+    background: black;
+    color: white;
+}
+
+.producto-nota {
+    margin-top: 20px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.producto-precios-bloque {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+    .producto-detalle {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+}
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contacto-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 80px 10%;
+    align-items: center;
+}
+
+.contacto-imagen img {
+    width: 70%;
+    border-radius: 12px;
+}
+
+.contacto-info h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.contacto-texto {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* ======================
+   REDES GRANDES
+====================== */
+
+.contacto-redes-grandes {
+    display: flex;
+    gap: 35px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.contacto-redes-grandes .red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    transition: 0.3s;
+}
+
+.contacto-redes-grandes i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+/* Colores oficiales */
+
+.instagram i, .facebook i, .tiktok i { 
+    color: inherit; 
+}
+
+.contacto-redes-grandes .red:hover {
+    transform: translateY(-5px);
+}
+
+.contacto-redes-grandes .red:hover i {
+    transform: scale(1.1);
+}
+
+/* ======================
+   EMAIL
+====================== */
+
+.contacto-email {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+/* ======================
+   FORMULARIO
+====================== */
+
+.form-contacto input,
+.form-contacto textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+.btn-enviar {
+    padding: 12px 30px;
+    border: 1px solid black;
+    background: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-enviar:hover {
+    background: black;
+    color: white;
+}
+
+/* ======================
+   WHATSAPP
+====================== */
+
+.btn-whatsapp {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 35px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.85;
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+@media (max-width: 900px) {
+
+    .contacto-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 8%;
+        text-align: center;
+    }
+
+    .contacto-redes-grandes {
+        justify-content: center;
+    }
+
+}
+
+
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+
+    .contacto-container {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+
+    .collage-proyectos {
+        column-count: 1;
+    }
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background-color: black; /* O el color de fondo que estés usando */
+    padding: 40px 0 20px;
+    border-top: 1px solid brown;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Iconos de redes */
+.footer-redes {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.footer-redes a {
+    color: wheat; /* El tono café del sitio */
+    font-size: 1.2rem;
+    transition: opacity 0.3s;
+}
+
+.footer-redes a:hover {
+    opacity: 0.7;
+}
+
+/* Textos */
+.footer-copy {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+}
+
+.footer-creadora {
+    font-size: 0.75rem;
+    color: #999;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.footer-creadora a {
+    color: #8d6e63;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-creadora a:hover {
+    color: #5d4037;
+    text-decoration: underline;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px){
+
+    .detalle-obra,
+    .detalle-producto{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .bloque-doble{
+        grid-template-columns: 1fr;
+    }
+
+    nav ul{
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px){
+    .logo{
+        width: 90px;
+    }
+}
+/* =========================
+   FIX GENERAL MOBILE
+
+
+@media (max-width: 768px) {
+
+    section {
+        padding: 40px 20px !important;
+    }
+
+}========================= */
