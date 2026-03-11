@@ -68,57 +68,88 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    /* 5. LIGHTBOX NAVEGABLE */
-    if (document.body.classList.contains("galeria-page")) {
-        const itemsParaLightbox = Array.from(document.querySelectorAll(".galeria-item"));
-        const lightbox = document.getElementById("galeria-lightbox");
-        const img = document.getElementById("galeria-img");
-        const titulo = document.getElementById("galeria-titulo-obra");
-        const tecnica = document.getElementById("galeria-tecnica");
-        const medidas = document.getElementById("galeria-medidas");
-        const anio = document.getElementById("galeria-anio");
-        const precio = document.getElementById("galeria-precio");
-        const cerrar = document.querySelector(".galeria-cerrar");
-        
-        if (lightbox && !document.getElementById("lb-contador")) {
-            lightbox.insertAdjacentHTML('beforeend', `
-                <div id="lb-contexto" class="lightbox-contexto"><span id="lb-seccion"></span> | <span id="lb-contador"></span></div>
-                <div class="lightbox-nav prev" id="lb-prev">&#10094;</div>
-                <div class="lightbox-nav next" id="lb-next">&#10095;</div>
-            `);
-        }
-        const seccionTxt = document.getElementById("lb-seccion");
-        const contadorTxt = document.getElementById("lb-contador");
-        let currentIndex = 0;
-        const updateLightbox = (index) => {
-            currentIndex = index;
-            const item = itemsParaLightbox[currentIndex];
-            if (!item) return;
-            img.src = item.querySelector("img").src;
-            titulo.textContent = item.dataset.titulo || "";
-            tecnica.textContent = item.dataset.tecnica || "";
-            medidas.textContent = item.dataset.medidas || "";
-            anio.textContent = item.dataset.anio || "";
-            precio.textContent = item.dataset.precio || "";
-            const sub = item.closest('.galeria-bloque')?.querySelector('.galeria-subtitulo');
-            if (seccionTxt) seccionTxt.textContent = sub ? sub.innerText : "Obra";
-            if (contadorTxt) contadorTxt.textContent = `${currentIndex + 1} / ${itemsParaLightbox.length}`;
-        };
-        itemsParaLightbox.forEach((item, index) => {
-            item.addEventListener("click", () => { updateLightbox(index); lightbox.style.display = "flex"; document.body.style.overflow = "hidden"; });
-        });
-        document.getElementById("lb-next").onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % itemsParaLightbox.length; updateLightbox(currentIndex); };
-        document.getElementById("lb-prev").onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + itemsParaLightbox.length) % itemsParaLightbox.length; updateLightbox(currentIndex); };
-        const cerrarLB = () => { if (lightbox) { lightbox.style.display = "none"; document.body.style.overflow = "auto"; } };
-        if (cerrar) cerrar.addEventListener("click", cerrarLB);
-        document.addEventListener("keydown", (e) => {
-            if (lightbox?.style.display === "flex") {
-                if (e.key === "ArrowRight") currentIndex = (currentIndex + 1) % itemsParaLightbox.length; updateLightbox(currentIndex);
-                if (e.key === "ArrowLeft") currentIndex = (currentIndex - 1 + itemsParaLightbox.length) % itemsParaLightbox.length; updateLightbox(currentIndex);
-                if (e.key === "Escape") cerrarLB();
-            }
-        });
+/* 5. LIGHTBOX NAVEGABLE */
+if (document.body.classList.contains("galeria-page")) {
+    const itemsParaLightbox = Array.from(document.querySelectorAll(".galeria-item"));
+    const lightbox = document.getElementById("galeria-lightbox");
+    const img = document.getElementById("galeria-img");
+    const titulo = document.getElementById("galeria-titulo-obra");
+    const tecnica = document.getElementById("galeria-tecnica");
+    const medidas = document.getElementById("galeria-medidas");
+    const anio = document.getElementById("galeria-anio");
+    const precio = document.getElementById("galeria-precio");
+    const cerrar = document.querySelector(".galeria-cerrar");
+    
+    if (lightbox && !document.getElementById("lb-contador")) {
+        lightbox.insertAdjacentHTML('beforeend', `
+            <div id="lb-contexto" class="lightbox-contexto"><span id="lb-seccion"></span> | <span id="lb-contador"></span></div>
+            <div class="lightbox-nav prev" id="lb-prev">&#10094;</div>
+            <div class="lightbox-nav next" id="lb-next">&#10095;</div>
+        `);
     }
+
+    const seccionTxt = document.getElementById("lb-seccion");
+    const contadorTxt = document.getElementById("lb-contador");
+    let currentIndex = 0;
+
+    const updateLightbox = (index) => {
+        currentIndex = index;
+        const item = itemsParaLightbox[currentIndex];
+        if (!item) return;
+
+        img.src = item.querySelector("img").src;
+        titulo.textContent = item.dataset.titulo || "";
+        tecnica.textContent = item.dataset.tecnica || "";
+        medidas.textContent = item.dataset.medidas || "";
+        anio.textContent = item.dataset.anio || "";
+        precio.textContent = item.dataset.precio || "";
+
+        const sub = item.closest('.galeria-bloque')?.querySelector('.galeria-subtitulo');
+        if (seccionTxt) seccionTxt.textContent = sub ? sub.innerText : "Obra";
+        if (contadorTxt) contadorTxt.textContent = `${currentIndex + 1} / ${itemsParaLightbox.length}`;
+
+        // --- LÓGICA DE LOS 3 BOTONES DINÁMICOS ---
+        let contenedorAccion = document.getElementById("lb-accion-container");
+        if (!contenedorAccion) {
+            precio.insertAdjacentHTML('afterend', '<div id="lb-accion-container" style="margin-top:20px;"></div>');
+            contenedorAccion = document.getElementById("lb-accion-container");
+        }
+
+        const urlObra = item.dataset.url;
+        const disponible = item.dataset.disponible === "true";
+        const nombreObra = item.dataset.titulo || "esta obra";
+
+        if (disponible && urlObra) {
+            // OPCIÓN 1: Disponible y con página propia
+            contenedorAccion.innerHTML = `<a href="${urlObra}" class="btn-lb-accion principal">Ver detalles y comprar</a>`;
+        } else if (disponible && !urlObra) {
+            // OPCIÓN 2: Disponible pero se consulta por correo
+            const subject = encodeURIComponent(`Consulta: ${nombreObra}`);
+            contenedorAccion.innerHTML = `<a href="mailto:thiagomar.ilus@gmail.com?subject=${subject}" class="btn-lb-accion secundario">Consultar por esta obra</a>`;
+        } else {
+            // OPCIÓN 3: No disponible / Colección Privada (Manda a contacto)
+            contenedorAccion.innerHTML = `<a href="../consulta.html" class="btn-lb-accion terciario">Cotizar obra similar</a>`;
+        }
+    };
+
+    itemsParaLightbox.forEach((item, index) => {
+        item.addEventListener("click", () => { updateLightbox(index); lightbox.style.display = "flex"; document.body.style.overflow = "hidden"; });
+    });
+
+    document.getElementById("lb-next").onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % itemsParaLightbox.length; updateLightbox(currentIndex); };
+    document.getElementById("lb-prev").onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + itemsParaLightbox.length) % itemsParaLightbox.length; updateLightbox(currentIndex); };
+
+    const cerrarLB = () => { if (lightbox) { lightbox.style.display = "none"; document.body.style.overflow = "auto"; } };
+    if (cerrar) cerrar.addEventListener("click", cerrarLB);
+
+    document.addEventListener("keydown", (e) => {
+        if (lightbox?.style.display === "flex") {
+            if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % itemsParaLightbox.length; updateLightbox(currentIndex); }
+            if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + itemsParaLightbox.length) % itemsParaLightbox.length; updateLightbox(currentIndex); }
+            if (e.key === "Escape") cerrarLB();
+        }
+    });
+}
 
     /* 6. HOVER IMAGENES */
     const imagenesHover = document.querySelectorAll(".imagen-hover");
