@@ -790,8 +790,6 @@ body {
     margin-top: 5px;
 }
 
-
-
 /* --------------*/
 /* Contenedor que envuelve la banda y las flechas */
 .galeria-relativo {
@@ -837,6 +835,7 @@ body {
     transition: transform 0.3s ease;
     pointer-events: auto;
 }
+.galeria-item { position: relative; cursor: pointer; }
 
 .galeria-item img {
     width: 100%;
@@ -852,6 +851,24 @@ body {
 .galeria-item:hover img {
     transform: scale(1.02);
 }
+.badge-venta {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #5d4037;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
+}
+.badge-venta.vendido {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #eee;
+    backdrop-filter: blur(5px);
+}
+
 
 /* ==========================================================
    FLECHAS (Solo aparecen en PC)
@@ -973,6 +990,45 @@ body {
 
 .lightbox-nav.prev { left: 10px; }
 .lightbox-nav.next { right: 10px; }
+
+.btn-lb-accion {
+    display: inline-block;
+    padding: 12px 28px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    border-radius: 30px; /* Redondeados para que se vean modernos */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Estado Normal: Blanco y limpio */
+.btn-lb-accion.principal, 
+.btn-lb-accion.secundario, 
+.btn-lb-accion.terciario {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Al pasar el mouse (Hover) y al dar clic (Active) */
+.btn-lb-accion:hover, 
+.btn-lb-accion:active {
+    background-color: #5d4037; /* El café de Thiago */
+    color: #ffffff;            /* Texto blanco para que resalte */
+    border-color: #5d4037;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Pequeña diferencia para el de "Cotizar" para que no compita tanto */
+.btn-lb-accion.terciario {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-style: dashed; /* Un toque artístico diferente */
+}
 
 .galeria-ficha {
     max-width: 350px;
@@ -1301,86 +1357,103 @@ body {
 /* =====================================================
    SECCIÓN ORIGINALES (Obras en venta)
 ===================================================== */
-
 .seccion-originales {
-    display: flex;             
-    flex-wrap: wrap;           
-    flex-direction: column;    /* Alinea título arriba y grid abajo */
-    align-items: center;       
-    padding: 60px 10%;
-    background-image: url("../img/fondo1.png");
-    background-size: cover;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #d2b48c 0%, #8d6e63 100%);
+    background-attachment: fixed; /* Esto hace que el fondo se quede quieto al scrollear */
     min-height: 100vh;
+    padding: 80px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Título único para Originales */
-.titulo-originales {
-    text-align: center;
-    width: 100%;
-    font-size: 2.5rem;
-    color: black;     
-    letter-spacing: 3px;
-    margin-bottom: 40px;
-    font-family: inherit; /* O la que uses para tus headers */
-}
-
-/* Contenedor de las tarjetas */
 .originales-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
+    gap: 50px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
 }
 
-/* Tarjeta individual */
 .originales-card {
-    background-color: rgba(255, 255, 255, 0.4); /* Un poco más de contraste */
-    backdrop-filter: blur(5px); /* Efecto moderno sobre el fondo */
-    border-radius: 15px;
-    padding: 25px;
+    /* 1. Transparencia con Glassmorphism */
+    background-color: rgba(255, 255, 255, 0.25); /* Fondo blanco con 40% de opacidad */
+    backdrop-filter: blur(15px);/* El efecto de desenfoque del fondo */
+    -webkit-backdrop-filter: blur(15px); /* Compatibilidad para Safari */
+    
+    /* 2. Bordes y Sombras */
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    border-radius: 25px; /* Bordes bien redondeados */
+    padding: 30px;
     text-align: center;
-    transition: 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    
+    /* 3. Animación y Layout */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 300px; /* Ancho fijo para control */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 320px; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Sombra más suave y extendida */
 }
 
 .originales-card:hover {
-    transform: translateY(-8px);
-    background-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-10px) scale(1.02);
+    background-color: rgba(255, 255, 255, 0.35); /* Se aclara un poco al pasar el mouse */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .originales-imagen {
     width: 100%;
-    height: 250px;
-    margin-bottom: 15px;
+    height: 300px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:transparent; /* Fondo de imagen muy tenue */
+    border-radius: 20px; /* Redondeamos también el contenedor de la foto */
+    overflow: hidden;
 }
 
 .originales-imagen img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
+    /* Un truquito para que la foto flote dentro de la tarjeta */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); 
 }
 
 .originales-card h3 {
-    margin: 10px 0;
-    font-size: 1.2rem;
+    margin: 15px 0 5px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #222;
 }
 
 .originales-precio {
     font-weight: bold;
     font-size: 1.1rem;
-    margin-bottom: 15px;
-    color: #5d4037; /* Ese tono café que te gusta */
+    margin-bottom: 20px;
+    color: #5d4037; 
+}
+
+/* El botón que tenías en el HTML necesita estilo */
+.btn-originales {
+    text-decoration: none;
+    color: #5d4037;
+    border: 1px solid #5d4037;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.btn-originales:hover {
+    background-color: #5d4037;
+    color: white;
 }
 
 /* -----------------------
@@ -1423,46 +1496,52 @@ originales
     align-items: center;
 }
 
-
 .imagen-obra {
-    display: inline-block; /* Para que se ajuste al tamaño de la imagen */
-    line-height: 0;        /* Quita espacios extra abajo de la imagen */
+    display: inline-block;
+    line-height: 0;
     
-    /* 1. El Marco (Color café madera) */
-    background-color: #5d4037; 
-    padding: 12px;         /* Grosor del marco de madera */
-    
-    /* 2. Relieve sutil del marco */
-    border: 1px solid #4e342e; 
-    
-    /* 3. Sombra para dar volumen a la pieza completa */
-    box-shadow: 
-        0 10px 30px rgba(0,0,0,0.2), /* Sombra proyectada en la pared */
-        inset 0 0 5px rgba(0,0,0,0.3); /* Sombra interna del marco */
+    /* Quitamos TODO lo anterior */
+    background: transparent;
+    padding: 0;
+    border: none;
+    margin: 0 auto; /* Centrado si el contenedor padre lo permite */
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    transition: all 0.5s ease;
+    position: relative;
+}
+.imagen-obra:hover {
+    /* Efecto de "elevación" al pasar el mouse */
+    transform: translateY(-5px) scale(1.01);
+    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.25));
 }
 
-/* La Obra y la María Luisa (Paspartú) */
 .imagen-obra img {
     display: block;
     max-width: 100%;
     height: auto;
-    
-    /* 1. María Luisa: El borde blanco que hace resaltar la acuarela */
-    border: 25px solid #ffffff; 
-    
-    /* 2. Un borde milimétrico gris para separar el blanco de la madera */
-    outline: 1px solid #e0e0e0;
-    
+    border: none;
+    outline: none;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+.capa-protectora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0,0,0,0); /* Invisible */
 }
 
-/* Ajuste para que se vea bien en celulares */
+
+/* Ajuste para móviles */
 @media (max-width: 768px) {
     .imagen-obra {
-        padding: 8px; /* Madera más delgada */
-    }
-    .imagen-obra img {
-        border-width: 15px; /* Blanco más delgado */
+        /* Sombras más sutiles en pantallas pequeñas */
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
     }
 }
 
