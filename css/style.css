@@ -1415,7 +1415,6 @@ originales
 }
 
 /* DETALLE OBRA */
-
 .detalle-obra{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1424,10 +1423,47 @@ originales
     align-items: center;
 }
 
+
+.imagen-obra {
+    display: inline-block; /* Para que se ajuste al tamaño de la imagen */
+    line-height: 0;        /* Quita espacios extra abajo de la imagen */
+    
+    /* 1. El Marco (Color café madera) */
+    background-color: #5d4037; 
+    padding: 12px;         /* Grosor del marco de madera */
+    
+    /* 2. Relieve sutil del marco */
+    border: 1px solid #4e342e; 
+    
+    /* 3. Sombra para dar volumen a la pieza completa */
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.2), /* Sombra proyectada en la pared */
+        inset 0 0 5px rgba(0,0,0,0.3); /* Sombra interna del marco */
+}
+
+/* La Obra y la María Luisa (Paspartú) */
 .imagen-obra img {
-    width: 100%;
-    max-height: 600px;
-    object-fit: contain;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    
+    /* 1. María Luisa: El borde blanco que hace resaltar la acuarela */
+    border: 25px solid #ffffff; 
+    
+    /* 2. Un borde milimétrico gris para separar el blanco de la madera */
+    outline: 1px solid #e0e0e0;
+    
+    box-sizing: border-box;
+}
+
+/* Ajuste para que se vea bien en celulares */
+@media (max-width: 768px) {
+    .imagen-obra {
+        padding: 8px; /* Madera más delgada */
+    }
+    .imagen-obra img {
+        border-width: 15px; /* Blanco más delgado */
+    }
 }
 
 .precio-obra {
